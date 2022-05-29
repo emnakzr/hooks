@@ -1,12 +1,22 @@
 import React from "react";
-const MoviesList= (props) =>{
-    return(
+import { Link } from "react-router-dom";
+import SingleMovie from "./SingleItem";
+import { Container, Navbar, Nav } from 'react-bootstrap';
+import { useParams, useNavigate } from "react-router-dom"
+const MoviesList = (props) => {
+    const navigate = useNavigate()
+    const back = () => {
+        navigate('/')
+    }
+
+
+
+
+    return (
         <>
-        {props.movies.map((movies,index)=><div>
-            {movies.Title}
-            <img src={movies.Poster} alt="movie" width="100"></img>
-        </div>
-        )}
+            <h1>List:</h1>
+            {props.movies.map((movie, index) => (<SingleMovie key={index} movie={movie} />)
+            )}
         </>
     )
 }
